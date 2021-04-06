@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cmath>
 void test (int win_X_Column, int win_O_Column, int win_X_Str, int win_O_Str, int win_X_Diagonal,int win_O_Diagonal,int characters_X, int characters_O, bool corField){
     std::cout <<"win_X_Column "<< win_X_Column << std::endl;
     std::cout << "win_O_Column " << win_O_Column << std::endl;
@@ -98,8 +97,8 @@ std::string winner (int colX, int colO, int strX, int strO, int diagX, int diagO
         return "O";
     }else if (!winX && !winO){
         return "null";
-    }
-};
+    }else return "error\n";
+}
 int main() {
     std::string str_1;
     std::string str_2;
@@ -108,8 +107,6 @@ int main() {
     std::cin >> str_1;
     std::cin >> str_2;
     std::cin >> str_3;
-    //int x = 2;
-    //int y = 3;
     bool corStr = (str_1.length() == 3 && str_2.length() == 3 && str_3.length() == 3);
     bool corSy = correct_Symbol(str_1,str_2,str_3);
     if (!corStr){
