@@ -7,11 +7,11 @@ std::string encrypt_caesar(std::string encryptText, int number)
         bool bigLetter = encryptText[i] >= 'A' && encryptText[i] <= 'Z';
         bool corLetter = (encryptText[i] >= 'a' && encryptText[i] <= 'z') || (encryptText[i] >= 'A' && encryptText[i] <= 'Z');
         int int_letter=0;
-        !bigLetter ? int_letter = encryptText[i] - 96 : int_letter = encryptText[i] - 64;
+        !bigLetter ? int_letter = encryptText[i] - ('a'-1) : int_letter = encryptText[i] - ('A'-1);
         for (int count = std::abs(number); count > 0 && corLetter; count--){
             number > 0 ? (int_letter >= 26 ? int_letter = 1 : int_letter++) : (int_letter <= 1 ? int_letter = 26 : int_letter--);
         }
-        !bigLetter ? encryptText[i] = 96 + int_letter : encryptText[i] = 64 + int_letter;
+        !bigLetter ? encryptText[i] = ('a'-1) + int_letter : encryptText[i] = ('A'-1) + int_letter;
     }
     return encryptText;
 }
