@@ -6,7 +6,10 @@ string number2;
 int positionPoint1 = 0;
 int positionPoint2 = 0;
 bool negativeNumber;
+
 bool correct_Number(int number_number){
+    bool allZero1 = true;
+    bool allZero2 = true;
     if (number_number < 0 || number_number > 2){
         cout << "\nfunction call error! invalid parameter !\n";
         return false;
@@ -21,6 +24,9 @@ bool correct_Number(int number_number){
     int counterPoint=0;
     for (int i=0; i < number.length(); i++){
         if (number[i] >= '0' && number[i] <= '9'){
+            if (number[i] != 0) {
+                number_number == 1 ? allZero1 = false : allZero2 = false;
+            }
             onlyNumber = true;
         }else if ((number[i] < '0' || number[i] > '9') && (number[i] != '.' && number[i] != '-')){
             return false;
@@ -35,6 +41,9 @@ bool correct_Number(int number_number){
         }else if (number[i] == '-' && i != 0){
             return false;
         }
+    }
+    if ((allZero1 || allZero2) && number[0] == '-') {
+        number_number == 1 ? number1[0] = '0' : number2[0] = '0';
     }
     if (onlyNumber && correctSign){
         return true;
